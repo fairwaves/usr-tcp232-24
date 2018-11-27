@@ -17,6 +17,91 @@ USR-TCP232-24 - это преобразователь интерфейсов, в
 
 Кроме счётчика и преобразователя интерфейсов я также купил блок питания для установки на DIN-рейку рядом со счётчиком. К сожалению, в ящике с электросчётчиком для этого блока питания не хватило места, поэтому он переехал в соседний ящик, поближе к преобразователю интерфейсов, где особого смысла в таком блоке питания уж не было.
 
+Использование программы
+-----------------------
+
+Для сборки программы из исходных текстов можно воспользоваться имеющимся в комплекте файлом make.sh
+
+Если запустить программу из командной строки, не указывая ей никаких аргументов, программа выведет справку по использованию, которая выглядит следующим образом:
+
+```
+Usage: usr discover <interface>
+       usr config|change <interface> <mac> <options>
+Options:
+  Serial interface:
+    -1               - use one stop bit
+    -2               - use two stop bits
+    -5               - use five data bits
+    -6               - use six data bits
+    -7               - use seven data bits
+    -8               - use eight data bits
+    -N               - don't use parity bit
+    -E               - use even parity bit control
+    -O               - use odd parity bit control
+    -M               - always set parity bit
+    -C               - always clear parity bit
+    -r <bitrate>     - use specified bitrate, bits/s
+    -w <word-format> - use specified data bits, parity control mode
+                       and stop bits
+                       Example: 8N1 - 8 data bits, no parity control, 1 stop bit
+    -s <serial>      - use specified bitrate, data bits, parity control mode
+                       and stop bits. Examples: 9600/8N1, 19200/7-E-1
+  Ethernet interface:
+    -i <ip>          - use specified IP
+    -n <netmask>     - use specified subnetwork mask
+    -g <gateway>     - use specified gateway
+  Converter mode:
+    -u               - use UDP-client mode
+    -U               - use UDP-server mode
+    -t               - use TCP-client mode
+    -T               - use TCP-server mode
+    -m               - use specified source port
+                       (for UDP-client and TCP-client modes)
+                       or listen specified port
+                       (for UDP-server and TCP-server modes)
+    -d <dest-ip>     - use specified destination ip
+                       (for UDP-client and TCP-client modes)
+    -p <dest-port>   - use specified destination port
+                       (for UDP-client and TCP-client modes)
+  Additional settings:
+    -I <id>          - use specified converter identifier
+                       (only in TCP-client mode and enabled flags
+                       connect-id or/and data-id)
+    -f <flags>       - use only specified comma-separated flags
+    -f +<flags>      - enable specified comma-separated flags
+    -f -<flags>      - disable specified comma-separated flags
+  Flags:
+    connect-id       - send converter identifier after connection was
+                       established
+    data-id          - send data with converter identifier
+    rs485            - use interface RS-485 instead of RS-232
+    rs422            - use interface RS-422 instead of RS-232
+    reset            - reset converter after 30 failed connections to server
+                       (only in TCP-client mode)
+    link             - enable link led when connection is established
+    index            - enable indexing of incoming connections
+                       (only for TCP-server mode)
+    rfc2217          - enable RFC2217 functions for temporarily changing of
+                       serial settings (only before next restart of converter)
+```
+
+Как можно увидеть, программа может работать в одном из трёх режимов:
+* `discover <interface>` - режим обнаружения преобразователей интерфейсов, находящихся в локальной сети за указанным сетевым Ethernet-интерфейсом,
+* `config <interface> <mac> <options>` - режим настройки преобразователя интерфейсов с указанным MAC-адресом и за указанным сетевым Ethernet-интерфейсом. Опции указывают настройки, которые нужно выставить на указанном преобразователе интерфейсов. Все не указанные настройки примут значение по умолчанию,
+* `change <interface> <mac> <options>` - режим изменения настроек преобразователя интерфейсов с указанным MAC-адресом и за указанным сетевым Ethernet-интерфейсом. Опции указывают новые значения настроек, которые нужно поменять. Все не указанные настройки сохраняют свои прежние значения.
+
+Опции для настройки преобразователя интерфейсов собраны в логически взаимосвязанные группы:
+
+### Serial interface - настройки последовательного интерфейса
+
+### Ethernet interface - настройки сетевого Ethernet-интерфейса
+
+### Converter mode - настройки режима работы преобразователя интерфейсов
+
+### Additional settings - дополнительные настройки, в том числе - флажки
+
+### Flags - флажки
+
 Лицензия
 --------
 
