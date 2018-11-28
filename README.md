@@ -39,7 +39,7 @@ Options:
     -E               - use even parity bit control
     -O               - use odd parity bit control
     -M               - always set parity bit
-    -C               - always clear parity bit
+    -C, -S           - always clear parity bit
     -r <bitrate>     - use specified bitrate, bits/s
     -w <word-format> - use specified data bits, parity control mode
                        and stop bits
@@ -115,7 +115,7 @@ Options:
 - `-E` - контроль чётности,
 - `-O` - контроль нечётности,
 - `-M` - всегда выставлять бит контроля чётности в единичное значение,
-- `-C` - всегда выставлять бит контроля чётности в нулевое значение.
+- `-C` или `-S` - всегда выставлять бит контроля чётности в нулевое значение.
 
 Все эти настройки вместе полностью определяют формат слова, передаваемого по последовательной линии. Формат слова можно указать, не прибегая к указанным выше опциям, а воспользовавшись опцией `-w <word-format>`. Программа принимает формат слова, указанный одной строчкой. Например: 8N1, 7-E-1, 7-C-1, 6S2, 5M2.
 

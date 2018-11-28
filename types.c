@@ -196,6 +196,8 @@ parity_t parity(char c)
     case 'M':
     case 'm':
       return PARITY_MARK;
+    case 'S':
+    case 's':
     case 'C':
     case 'c':
       return PARITY_CLEAR;

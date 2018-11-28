@@ -22,13 +22,13 @@ int help(char *executed_pathname)
                   "    -E               - use even parity bit control\n"
                   "    -O               - use odd parity bit control\n"
                   "    -M               - always set parity bit\n"
-                  "    -C               - always clear parity bit\n"
+                  "    -C, -S           - always clear parity bit\n"
                   "    -r <bitrate>     - use specified bitrate, bits/s\n"
                   "    -w <word-format> - use specified data bits, parity control mode\n"
-		  "                       and stop bits\n"
+                  "                       and stop bits\n"
                   "                       Example: 8N1 - 8 data bits, no parity control, 1 stop bit\n"
                   "    -s <serial>      - use specified bitrate, data bits, parity control mode\n"
-		  "                       and stop bits. Examples: 9600/8N1, 19200/7-E-1\n"
+                  "                       and stop bits. Examples: 9600/8N1, 19200/7-E-1\n"
                   "  Ethernet interface:\n"
                   "    -i <ip>          - use specified IP\n"
                   "    -n <netmask>     - use specified subnetwork mask\n"
@@ -39,33 +39,33 @@ int help(char *executed_pathname)
                   "    -t               - use TCP-client mode\n"
                   "    -T               - use TCP-server mode\n"
                   "    -m               - use specified source port\n"
-		  "                       (for UDP-client and TCP-client modes)\n"
-		  "                       or listen specified port\n"
-		  "                       (for UDP-server and TCP-server modes)\n"
+                  "                       (for UDP-client and TCP-client modes)\n"
+                  "                       or listen specified port\n"
+                  "                       (for UDP-server and TCP-server modes)\n"
                   "    -d <dest-ip>     - use specified destination ip\n"
-		  "                       (for UDP-client and TCP-client modes)\n"
+                  "                       (for UDP-client and TCP-client modes)\n"
                   "    -p <dest-port>   - use specified destination port\n"
-		  "                       (for UDP-client and TCP-client modes)\n"
-		  "  Additional settings:\n"
+                  "                       (for UDP-client and TCP-client modes)\n"
+                  "  Additional settings:\n"
                   "    -I <id>          - use specified converter identifier\n"
-		  "                       (only in TCP-client mode and enabled flags\n"
-		  "                       connect-id or/and data-id)\n"
-		  "    -f <flags>       - use only specified comma-separated flags\n"
-		  "    -f +<flags>      - enable specified comma-separated flags\n"
-		  "    -f -<flags>      - disable specified comma-separated flags\n"
-		  "  Flags:\n"
-		  "    connect-id       - send converter identifier after connection was\n"
-		  "                       established\n"
-		  "    data-id          - send data with converter identifier\n"
-		  "    rs485            - use interface RS-485 instead of RS-232\n"
-		  "    rs422            - use interface RS-422 instead of RS-232\n"
-		  "    reset            - reset converter after 30 failed connections to server\n"
-		  "                       (only in TCP-client mode)\n"
-		  "    link             - enable link led when connection is established\n"
-		  "    index            - enable indexing of incoming connections\n"
-		  "                       (only for TCP-server mode)\n"
-		  "    rfc2217          - enable RFC2217 functions for temporarily changing of\n"
-		  "                       serial settings (only before next restart of converter)\n",
+                  "                       (only in TCP-client mode and enabled flags\n"
+                  "                       connect-id or/and data-id)\n"
+                  "    -f <flags>       - use only specified comma-separated flags\n"
+                  "    -f +<flags>      - enable specified comma-separated flags\n"
+                  "    -f -<flags>      - disable specified comma-separated flags\n"
+                  "  Flags:\n"
+                  "    connect-id       - send converter identifier after connection was\n"
+                  "                       established\n"
+                  "    data-id          - send data with converter identifier\n"
+                  "    rs485            - use interface RS-485 instead of RS-232\n"
+                  "    rs422            - use interface RS-422 instead of RS-232\n"
+                  "    reset            - reset converter after 30 failed connections to server\n"
+                  "                       (only in TCP-client mode)\n"
+                  "    link             - enable link led when connection is established\n"
+                  "    index            - enable indexing of incoming connections\n"
+                  "                       (only for TCP-server mode)\n"
+                  "    rfc2217          - enable RFC2217 functions for temporarily changing of\n"
+                  "                       serial settings (only before next restart of converter)\n",
                   executed_pathname, executed_pathname);
   return 1;
 }
@@ -214,7 +214,7 @@ bool_t apply_flags(unsigned char *flags, char *sflags)
       if (*sflags != ',')
       {
         fprintf(stderr, "apply_flags: syntax error, unparsed rest of string %s\n", sflags);
-	return FALSE;
+        return FALSE;
       }
       sflags++;
     }
@@ -231,8 +231,8 @@ bool_t apply_flags(unsigned char *flags, char *sflags)
       {
         mask |= flags_masks[i].mask;
         sflags += n;
-	parsed = TRUE;
-	break;
+        parsed = TRUE;
+        break;
       }
     }
 
