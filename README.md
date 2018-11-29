@@ -55,7 +55,7 @@ Options:
     -U               - use UDP-server mode
     -t               - use TCP-client mode
     -T               - use TCP-server mode
-    -m               - use specified source port
+    -m <port>        - use specified source port
                        (for UDP-client and TCP-client modes)
                        or listen specified port
                        (for UDP-server and TCP-server modes)

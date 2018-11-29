@@ -38,7 +38,7 @@ int help(char *executed_pathname)
                   "    -U               - use UDP-server mode\n"
                   "    -t               - use TCP-client mode\n"
                   "    -T               - use TCP-server mode\n"
-                  "    -m               - use specified source port\n"
+                  "    -m <port>        - use specified source port\n"
                   "                       (for UDP-client and TCP-client modes)\n"
                   "                       or listen specified port\n"
                   "                       (for UDP-server and TCP-server modes)\n"
