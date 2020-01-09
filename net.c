@@ -231,11 +231,10 @@ bool_t discover_next(int sock, discover_t *discovered)
 
   /* Пока не достигнут таймаут обнаружения */
   unsigned char buf[BUF_SIZE];
-  ssize_t size;
   while (discover_timeout != 1)
   {
     /* Принимаем пакеты до тех пор, пока не попадётся не пустой пакет */
-    size = recv(sock, buf, BUF_SIZE, 0);
+    ssize_t size = recv(sock, buf, BUF_SIZE, 0);
     if (size <= 0)
     {
       continue;

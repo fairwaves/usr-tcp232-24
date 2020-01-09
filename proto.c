@@ -339,23 +339,23 @@ bool_t params_print(params_t *params)
   switch (params->parity)
   {
     case PARITY_DISABLED:
-      fprintf(stdout, "Serial:  %d/%d-N-%d\n",
+      fprintf(stdout, "Serial:  %u/%u-N-%u\n",
                       params->bitrate, params->data_bits, params->stop_bits);
       break;
     case PARITY_ODD:
-      fprintf(stdout, "Serial:  %d/%d-O-%d\n",
+      fprintf(stdout, "Serial:  %u/%u-O-%u\n",
                       params->bitrate, params->data_bits, params->stop_bits);
       break;
     case PARITY_EVEN:
-      fprintf(stdout, "Serial:  %d/%d-E-%d\n",
+      fprintf(stdout, "Serial:  %u/%u-E-%u\n",
                       params->bitrate, params->data_bits, params->stop_bits);
       break;
     case PARITY_MARK:
-      fprintf(stdout, "Serial:  %d/%d-M-%d\n",
+      fprintf(stdout, "Serial:  %u/%u-M-%u\n",
                       params->bitrate, params->data_bits, params->stop_bits);
       break;
     case PARITY_CLEAR:
-      fprintf(stdout, "Serial:  %d/%d-C-%d\n",
+      fprintf(stdout, "Serial:  %u/%u-C-%u\n",
                       params->bitrate, params->data_bits, params->stop_bits);
       break;
     default:
